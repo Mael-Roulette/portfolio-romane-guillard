@@ -1,0 +1,49 @@
+@use "../abstracts" as *;
+
+/* -------------------------------------------------- */
+/* ---------- Style des boutons ---------- */
+/* -------------------------------------------------- */
+
+.button {
+	padding: 1rem 2rem;
+	color: $white;
+	background-color: $black;
+	border: 1px solid $black;
+	font-size: 1.6rem;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+
+	&-group {
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+		justify-content: start;
+	}
+
+	&-primary {
+		@extend .button;
+		background-color: $black;
+		color: $white;
+
+		&:hover {
+			background-color: $white;
+			color: $black;
+		}
+	}
+
+	&-secondary {
+		@extend .button;
+		background-color: $white;
+		color: $black;
+
+		&:hover {
+			background-color: $black;
+			color: $white;
+		}
+	}
+}
+
+.link {
+	font-size: 1.6rem;
+	text-decoration: underline;
+}

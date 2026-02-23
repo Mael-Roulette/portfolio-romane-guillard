@@ -1,0 +1,16 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "sass --watch --style=compressed ./scss/main.scss ../dist/styles.css",
+    "build": "uglifyjs ./js/app.js -o ../dist/app.js"
+  },
+  "author": "Studio Roulette",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "uglify-js": "^3.19.3"
+  }
+}

@@ -1,0 +1,36 @@
+$font-primary: "Arial", sans-serif;
+
+$flight: 300;
+$fregular: 400;
+$fsemibold: 600;
+$fbold: 700;
+
+/* ----- Import ----- */
+// @font-face {
+//     font-family: 'Manrope-regular';
+//     font-style: normal;
+//     font-weight: 400;
+//     src: url(../../assets/fonts/Manrope-Regular.ttf);
+// }
+
+/* -------------------------------------------------- */
+/* ---------- Couleurs ---------- */
+
+$black: #000;
+$white: #fff;
+
+$danger: #dc3535;
+$warning: #ffc107;
+$success: #28a745;
+
+$transition: all .3s ease-out;
+
+/* -------------------------------------------------- */
+/* ---------- Responsive variable ---------- */
+
+$breakpoints: (
+	"sm": 576px,
+	"md": 768px,
+	"lg": 992px,
+	"xl": 1200px,
+);
