@@ -7,12 +7,27 @@ function block_editor_settings () {
     array (
       'name'  => __( 'Blanc', 'themeLangDomain' ),
       'slug'  => 'white',
-      'color' => '#fff',
+      'color' => '#f4f4f6',
     ),
     array (
       'name'  => __( 'Noir', 'themeLangDomain' ),
       'slug'  => 'black',
-      'color' => '#000',
+      'color' => '#110201',
+    ),
+    array (
+      'name'  => __( 'Rouge foncé', 'themeLangDomain' ),
+      'slug'  => 'dark-red',
+      'color' => '#690d08',
+    ),
+    array (
+      'name'  => __( 'Rouge', 'themeLangDomain' ),
+      'slug'  => 'red',
+      'color' => '#b9110e',
+    ),
+    array (
+      'name'  => __( 'Rouge clair', 'themeLangDomain' ),
+      'slug'  => 'light-red',
+      'color' => '#d65152',
     ),
   );
 

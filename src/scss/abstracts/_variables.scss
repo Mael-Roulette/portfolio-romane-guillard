@@ -1,4 +1,5 @@
 $font-primary: "Arial", sans-serif;
+$font-secondary: "StampatelloFaceto", sans-serif;
 
 $flight: 300;
 $fregular: 400;
@@ -6,31 +7,34 @@ $fsemibold: 600;
 $fbold: 700;
 
 /* ----- Import ----- */
-// @font-face {
-//     font-family: 'Manrope-regular';
-//     font-style: normal;
-//     font-weight: 400;
-//     src: url(../../assets/fonts/Manrope-Regular.ttf);
-// }
+@font-face {
+    font-family: "StampatelloFaceto";
+    font-style: normal;
+    font-weight: 400;
+    src: url(./fonts/StampatelloFaceto.otf);
+}
 
 /* -------------------------------------------------- */
 /* ---------- Couleurs ---------- */
 
-$black: #000;
-$white: #fff;
+$black: #110201;
+$white: #f4f4f6;
+$dark-red: #690d08;
+$red: #b9110e;
+$light-red: #d65152;
 
 $danger: #dc3535;
 $warning: #ffc107;
 $success: #28a745;
 
-$transition: all .3s ease-out;
+$transition: all 0.3s ease-out;
 
 /* -------------------------------------------------- */
 /* ---------- Responsive variable ---------- */
 
 $breakpoints: (
-	"sm": 576px,
-	"md": 768px,
-	"lg": 992px,
-	"xl": 1200px,
+    "sm": 576px,
+    "md": 768px,
+    "lg": 992px,
+    "xl": 1200px,
 );

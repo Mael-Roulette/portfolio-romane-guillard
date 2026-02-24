@@ -1,78 +1,122 @@
-<?php 
+<?php
 
-  function theme_support () {
-    add_theme_support( 'custom-logo' );
-    add_theme_support( 'post-thumbnail' );
+function theme_support()
+{
+    add_theme_support("custom-logo");
+    add_theme_support("post-thumbnail");
 
-    set_post_thumbnail_size( 480, 480 );
-  }
+    set_post_thumbnail_size(480, 480);
+}
 
-  add_action( 'init', 'theme_support' );
+add_action("init", "theme_support");
 
-
-  /**
-   * Permet d'ajouter un lien canonical sur chaque page
-   */
-  function add_canonical_url () {
+/**
+ * Permet d'ajouter un lien canonical sur chaque page
+ */
+function add_canonical_url()
+{
     global $wp;
-    $url = home_url( $wp->request . '/' );
+    $url = home_url($wp->request . "/");
 
     echo '<link rel=canonical href="' . $url . '">';
-  }
+}
 
-  add_action( 'wp_head', 'add_canonical_url' );
+add_action("wp_head", "add_canonical_url");
 
-  remove_action( 'wp_head', 'wp_generator' );
+remove_action("wp_head", "wp_generator");
 
+/* -------------------------------------------------- */
+/* ---------- Ajout des styles et scripts ---------- */
 
-  /* -------------------------------------------------- */
-  /* ---------- Ajout des styles et scripts ---------- */
+/**
+ * Ajout des scripts pour le style du site
+ */
+function add_styles()
+{
+    wp_register_style(
+        "main-style",
+        get_template_directory_uri() . "/dist/styles.css",
+        [],
+        false,
+    );
+    wp_enqueue_style("main-style");
+}
+add_action("wp_enqueue_scripts", "add_styles");
 
-  /**
-   * Ajout des scripts pour le style du site
-   */
-  function add_scripts () {
-    /* ----- Ajout du css ----- */
-    wp_register_style( 'main-style', get_template_directory_uri() . '/dist/styles.css', array(), false );
-    wp_enqueue_style( 'main-style' );
+function add_scripts()
+{
+    $dist_path = get_template_directory() . "/dist/";
+    $dist_uri = get_template_directory_uri() . "/dist/";
 
-    /* ----- Ajout du js ----- */
-    wp_enqueue_script( 'main-script', get_template_directory_uri() . '/dist/app.js', array(), false, true );
-  }
+    /* Dépendances entre scripts (handle => [handles requis avant lui]) */
+    $js_dependencies = [
+        "splash" => ["app"],
+    ];
 
-  add_action( 'wp_enqueue_scripts', 'add_scripts' );
+    /* Ordre de chargement (les scripts absents de cette liste suivent après) */
+    $js_priority = ["app", "splash"];
 
+    $js_files = glob($dist_path . "*.js");
+    if (empty($js_files)) {
+        return;
+    }
 
-    /**
-   * Ajout des scripts pour le style de l'admin
-   */
-  function add_admin_scripts () {
-    /* ----- Ajout du css admin ----- */
-    wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/assets/css/admin-styles.css', false, '1.0.0' );
-    wp_enqueue_style( 'custom_wp_admin_css' );
-  }
+    usort($js_files, function ($a, $b) use ($js_priority) {
+        $pa = array_search(basename($a, ".js"), $js_priority);
+        $pb = array_search(basename($b, ".js"), $js_priority);
+        return ($pa === false ? 99 : $pa) - ($pb === false ? 99 : $pb);
+    });
 
-  add_action( 'admin_enqueue_scripts', 'add_admin_scripts');
+    foreach ($js_files as $file) {
+        $handle = basename($file, ".js");
+        $deps = $js_dependencies[$handle] ?? [];
 
+        wp_enqueue_script(
+            $handle,
+            $dist_uri . basename($file),
+            $deps,
+            filemtime($file), // cache-busting auto
+            true,
+        );
+    }
+}
+add_action("wp_enqueue_scripts", "add_scripts");
 
-  /* -------------------------------------------------- */
-  /* ---------- Supression ---------- */
+/**
+ * Ajout des scripts pour le style de l'admin
+ */
+function add_admin_scripts()
+{
+    wp_register_style(
+        "custom_wp_admin_css",
+        get_template_directory_uri() . "/assets/css/admin-styles.css",
+        false,
+        "1.0.0",
+    );
+    wp_enqueue_style("custom_wp_admin_css");
+}
+add_action("admin_enqueue_scripts", "add_admin_scripts");
 
-  /**
-   * Suppression de menu
-   */
-  function remove_menus () {
-    remove_menu_page('edit-comments.php');
-  }
+/* -------------------------------------------------- */
+/* ---------- Supression ---------- */
 
-  add_action( 'admin_menu', 'remove_menus' );
+/**
+ * Suppression de menu
+ */
+function remove_menus()
+{
+    remove_menu_page("edit-comments.php");
+}
 
-  /**
-   * Suppression de sousmenu
-   */
-  function remove_submenus () {
-    remove_submenu_page( 'themes.php', 'theme-editor.php' );
-  }
+add_action("admin_menu", "remove_menus");
 
-  add_action( 'admin_menu', 'remove_submenus', 999 );
+/**
+ * Suppression de sousmenu
+ */
+function remove_submenus()
+{
+    remove_submenu_page("themes.php", "theme-editor.php");
+}
+
+add_action("admin_menu", "remove_submenus", 999);
 ?>
