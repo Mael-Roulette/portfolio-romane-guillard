@@ -45,12 +45,28 @@ add_action("wp_enqueue_scripts", "add_styles");
 
 function add_scripts()
 {
+    wp_enqueue_style(
+        "swiper",
+        "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css",
+        [],
+        null,
+    );
+
+    wp_enqueue_script(
+        "swiper",
+        "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js",
+        [],
+        null,
+        true,
+    );
+
     $dist_path = get_template_directory() . "/dist/";
     $dist_uri = get_template_directory_uri() . "/dist/";
 
     /* Dépendances entre scripts (handle => [handles requis avant lui]) */
     $js_dependencies = [
         "splash" => ["app"],
+        "app" => ["swiper"],
     ];
 
     /* Ordre de chargement (les scripts absents de cette liste suivent après) */

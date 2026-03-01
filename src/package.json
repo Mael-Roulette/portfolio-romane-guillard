@@ -15,6 +15,7 @@
   "description": "",
   "dependencies": {
     "concurrently": "^8.2.2",
-    "esbuild": "^0.21.5"
+    "esbuild": "^0.21.5",
+    "swiper": "^12.1.2"
   }
 }

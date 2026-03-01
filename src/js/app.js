@@ -1,4 +1,4 @@
-document.addEventListener( 'DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
   /**
    * Gère l'ouverture et fermeture du menu mobile
    */
@@ -39,6 +39,24 @@ document.addEventListener( 'DOMContentLoaded', function () {
       document.head.appendChild( styleEl );
     }
   }
-
   setupMenuToggle();
+
+  /**
+   * Gère les sliders
+   */
+   function initSwiperSlider() {
+       const sliderEl = document.querySelector('.banner-slider');
+
+       if (!sliderEl) return; 
+
+       new Swiper('.banner-slider', {
+           loop: true,
+           pagination: {
+               el: '.swiper-pagination'
+           },
+           slidesPerView: 1,
+           grabCursor: true,
+       });
+   }
+  initSwiperSlider();
 } );

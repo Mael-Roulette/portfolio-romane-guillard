@@ -2,7 +2,9 @@
 /**
  * Header / En-tête de page
  */
-?>
+
+// Contenu
+$header = get_field("header", 16); ?>
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -20,7 +22,7 @@
       <nav class="header-navbar section-inner">
         <?php get_site_logo("header-navbar-logo"); ?>
 
-        <?php if (has_nav_menu("main")): ?>
+        <?php if (has_nav_menu("main") || has_nav_menu("socials")): ?>
           <div class="header-menu-wrapper" id="navbarNavigation">
             <?php wp_nav_menu([
                 "theme_location" => "main",
@@ -28,6 +30,12 @@
                 "container" => false,
             ]); ?>
           </div>
+
+          <?php wp_nav_menu([
+              "theme_location" => "socials",
+              "menu_class" => "header-social-menu",
+              "container" => false,
+          ]); ?>
 
           <button type="button" class="header-toggle modal-trigger" data-target="navbarNavigation">
             <span class="header-toggle-bars"></span>
