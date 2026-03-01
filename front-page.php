@@ -10,7 +10,7 @@ $banner = get_field("banner");
 ?>
 
 
-<main id="site-content">
+<main id="site-content" class="home-content">
     <section class="banner section-inner">
         <div class="banner-slider swiper">
             <div class="swiper-wrapper">
@@ -36,6 +36,7 @@ $banner = get_field("banner");
                 }
                 ?>
             </div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 </main>

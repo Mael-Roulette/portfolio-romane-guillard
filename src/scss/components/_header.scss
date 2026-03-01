@@ -165,8 +165,6 @@
 
 @include responsive("lg") {
     .header {
-        margin-bottom: 2rem;
-
         &-toggle {
             display: none;
         }
