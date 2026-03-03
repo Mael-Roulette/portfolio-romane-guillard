@@ -54,60 +54,71 @@ $recent_additions_query = new WP_Query($recent_additions_args);
 
 <main id="site-content" class="home-content">
     <section class="banner section-inner">
-        <div class="banner-slider swiper">
-            <div class="swiper-wrapper">
-                <?php
-                $slides = $banner["featured_projects"];
-                foreach ($slides as $slide) {
-                    $large_featured_card = get_field(
-                        "large_featured_card",
-                        $slide->ID,
-                    ); ?>
-                    <div class="banner-slider-slide swiper-slide">
-                        <?php if ($large_featured_card): ?>
-                            <div class="banner-slider-slide-image">
-                                <img src="<?php echo $large_featured_card[
-                                    "url"
-                                ]; ?>" alt="<?php echo $large_featured_card[
+        <div class="banner-type-selection">
+            <a href="#" class="banner-type-selection-item active">Tout</a>
+            <a href="#" class="banner-type-selection-item">Vidéos</a>
+            <a href="#" class="banner-type-selection-item">Médias</a>
+        </div>
+        <div class="banner-slider-wrapper">
+            <div class="banner-slider swiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    $slides = $banner["featured_projects"];
+                    foreach ($slides as $slide) {
+                        $large_featured_card = get_field(
+                            "large_featured_card",
+                            $slide->ID,
+                        ); ?>
+                        <a href="<?php echo get_permalink(
+                            $slide->ID,
+                        ); ?>" class="banner-slider-slide swiper-slide">
+                            <?php if ($large_featured_card): ?>
+                                <div class="banner-slider-slide-image">
+                                    <img src="<?php echo $large_featured_card[
+                                        "url"
+                                    ]; ?>" alt="<?php echo $large_featured_card[
     "alt"
 ]; ?>">
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php
-                }
-                ?>
+                                </div>
+                            <?php endif; ?>
+                        </a>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <div class="swiper-pagination banner-slider-pagination"></div>
             </div>
-            <div class="swiper-pagination banner-slider-pagination"></div>
         </div>
     </section>
 
-    <section class="selection-projects section-inner">
-        <?php if ($selection_projects["title"]): ?>
-            <h2 class="selection-projects-title"><?php echo $selection_projects[
-                "title"
-            ]; ?></h2>
-        <?php endif; ?>
+    <section class="selection-projects-wrapper">
+        <div class="selection-projects section-inner">
+            <?php if ($selection_projects["title"]): ?>
+                <h2 class="selection-projects-title"><?php echo $selection_projects[
+                    "title"
+                ]; ?></h2>
+            <?php endif; ?>
 
-        <?php if ($selection_projects_query->have_posts()): ?>
-            <div class="home-projects-slider swiper">
-                <div class="swiper-wrapper">
-                    <?php
-                    while ($selection_projects_query->have_posts()):
-                        $selection_projects_query->the_post(); ?>
-                                        <div class="banner-slider-slide swiper-slide">
-                                            <?php get_template_part(
-                                                "template-parts/project-card-preview",
-                                            ); ?>
-                                        </div>
-                                    <?php
-                    endwhile;
-                    wp_reset_query();
-                    ?>
+            <?php if ($selection_projects_query->have_posts()): ?>
+                <div class="home-projects-slider swiper">
+                    <div class="swiper-wrapper">
+                        <?php
+                        while ($selection_projects_query->have_posts()):
+                            $selection_projects_query->the_post(); ?>
+                                            <div class="banner-slider-slide swiper-slide">
+                                                <?php get_template_part(
+                                                    "template -parts/project-card-preview",
+                                                ); ?>
+                                            </div>
+                                        <?php
+                        endwhile;
+                        wp_reset_query();
+                        ?>
+                    </div>
+                    <div class="swiper-pagination home-projects-slider-pagination"></div>
                 </div>
-                 <div class="swiper-pagination home-projects-slider-pagination"></div>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
+        </div>
     </section>
 
     <section class="audiovisual-projects section-inner">

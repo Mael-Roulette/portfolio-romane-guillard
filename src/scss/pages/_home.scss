@@ -8,13 +8,89 @@
     background-image: url("./imgs/background/liege.jpg");
     background-repeat: repeat;
     background-size: 50vw;
+    z-index: -1;
 }
 
 .banner {
-    padding-top: 5rem;
+    padding-top: 6rem;
+    margin-bottom: 4rem;
+
+    &-type-selection {
+        border-radius: 50px;
+        background-color: rgba($color: $red, $alpha: 0.6);
+        width: fit-content;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        position: relative;
+
+        &::before {
+            content: "";
+            background-image: url("./imgs/decorations/sparkle.webp");
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 8rem;
+            height: 8rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -8rem;
+            z-index: 2;
+        }
+
+        &-item {
+            text-decoration: none;
+            color: $white;
+            border-radius: 50px;
+            padding: 0.2rem 1.5rem;
+            font-size: 1.8rem;
+            font-weight: $fbold;
+
+            &.active {
+                color: rgba($color: $red, $alpha: 0.8);
+                background-color: $white;
+            }
+        }
+    }
 
     &-slider {
         padding-bottom: 5rem !important;
+        border-radius: 3rem;
+
+        &-wrapper {
+            position: relative;
+
+            &::before {
+                content: "";
+                background-image: url("./imgs/decorations/scotch.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 20rem;
+                height: 20rem;
+                position: absolute;
+                top: -7rem;
+                left: -7rem;
+                transform: rotate(-45deg);
+                z-index: 2;
+            }
+
+            &::after {
+                content: "";
+                background-image: url("./imgs/decorations/micro.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 18rem;
+                height: 18rem;
+                position: absolute;
+                bottom: -3rem;
+                right: -7rem;
+                z-index: 2;
+            }
+        }
 
         &-slide {
             &-image {
@@ -36,9 +112,49 @@
 
         &-pagination {
             position: absolute;
-            bottom: 1rem !important;
+            bottom: 1.5rem !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
+
+            .swiper-pagination-bullet {
+                width: 18px !important;
+                height: 18px !important;
+            }
+        }
+    }
+}
+
+.home-projects-slider {
+    padding-bottom: 6rem !important;
+
+    &-pagination {
+        position: absolute;
+        bottom: 3rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+
+        .swiper-pagination-bullet {
+            width: 14px !important;
+            height: 14px !important;
+        }
+    }
+}
+
+.selection-projects {
+    &-wrapper {
+        position: relative;
+
+        &::before {
+            content: "";
+            background-image: url("./imgs/background/papier-rouge.webp");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 80vh;
+            width: 100%;
+            position: absolute;
+            top: -8rem;
+            left: 0;
+            z-index: 0;
         }
     }
 }
