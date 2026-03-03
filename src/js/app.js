@@ -44,19 +44,35 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Gère les sliders
    */
-   function initSwiperSlider() {
-       const sliderEl = document.querySelector('.banner-slider');
-
-       if (!sliderEl) return; 
-
+  function initSwiperSlider() {
+     /* ----- Slider bannière ----- */
        new Swiper('.banner-slider', {
            loop: true,
            pagination: {
-               el: '.swiper-pagination'
+               el: '.banner-slider-pagination'
            },
            slidesPerView: 1,
            grabCursor: true,
        });
+
+       /* ----- Slider bannière ----- */
+         new Swiper('.home-projects-slider', {
+             loop: true,
+             slidesPerView: 1,
+             breakpoints: {
+               768: {
+                 slidesPerView: 2,
+               },
+               992: {
+                 slidesPerView: 3,
+               },
+             },
+             spaceBetween: 20,
+           grabCursor: true,
+           pagination: {
+               el: '.home-projects-slider-pagination'
+           },
+         });
    }
   initSwiperSlider();
 } );

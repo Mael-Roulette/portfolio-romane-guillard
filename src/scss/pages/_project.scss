@@ -1,0 +1,37 @@
+@use "../abstracts" as *;
+
+/* -------------------------------------------------- */
+/* ---------- Projet ---------- */
+/* -------------------------------------------------- */
+
+.project-card {
+    display: flex;
+    width: 100%;
+    min-height: 25rem;
+    border-radius: 3rem;
+    position: relative;
+
+    &-image {
+        width: 100%;
+        height: auto;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+    }
+
+    &-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+}

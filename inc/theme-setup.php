@@ -16,9 +16,8 @@ add_action("init", "theme_support");
 function add_canonical_url()
 {
     global $wp;
-    $url = home_url($wp->request . "/");
-
-    echo '<link rel=canonical href="' . $url . '">';
+    $url = trailingslashit(home_url($wp->request));
+    echo '<link rel="canonical" href="' . esc_url($url) . '">';
 }
 
 add_action("wp_head", "add_canonical_url");

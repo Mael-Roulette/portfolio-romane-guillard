@@ -1,0 +1,25 @@
+@use "../abstracts" as *;
+
+/* -------------------------------------------------- */
+/* ---------- Style des sliders ---------- */
+/* -------------------------------------------------- */
+
+.swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+
+    &-bullet {
+        width: 20px !important;
+        height: 20px !important;
+        background-color: $white !important;
+        opacity: 1 !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important;
+
+        &-active {
+            background-color: $red !important;
+        }
+    }
+}

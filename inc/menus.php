@@ -30,7 +30,7 @@ function social_links_to_icon($item_output, $item, $depth, $args)
     return $item_output;
 }
 
-add_action("walker_nav_menu_start_el", "social_links_to_icon", 10, 4);
+add_filter("walker_nav_menu_start_el", "social_links_to_icon", 10, 4);
 
 /**
  * Récupération des icones pour le menu des réseaux sociaux

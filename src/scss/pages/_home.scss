@@ -34,28 +34,11 @@
             }
         }
 
-        .swiper-pagination {
+        &-pagination {
             position: absolute;
             bottom: 1rem !important;
             left: 50% !important;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            z-index: 10;
-
-            &-bullet {
-                width: 20px;
-                height: 20px;
-                background-color: $white;
-                opacity: 1;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-
-                &-active {
-                    background-color: $red;
-                }
-            }
+            transform: translateX(-50%) !important;
         }
     }
 }

@@ -7,8 +7,50 @@ get_header();
 
 /* ----- Contenu ----- */
 $banner = get_field("banner");
-?>
 
+/* ----- Projets sélectionnés ----- */
+$selection_projects = get_field("selection_projects");
+
+$selection_args = [
+    "post_type" => "project",
+    "posts_per_page" => -1,
+    "post__in" => $selection_projects["projects"],
+];
+
+$selection_projects_query = new WP_Query($selection_args);
+
+/* ----- Projets audiovisuel ----- */
+$audiovisual_projects = get_field("audiovisual");
+
+$audiovisual_args = [
+    "post_type" => "project",
+    "posts_per_page" => -1,
+    "post__in" => $audiovisual_projects["projects"],
+];
+
+$audiovisual_projects_query = new WP_Query($audiovisual_args);
+
+/* ----- Projets créations digitales ----- */
+$digital_creations = get_field("digital_creations");
+
+$digital_creations_args = [
+    "post_type" => "project",
+    "posts_per_page" => -1,
+    "post__in" => $digital_creations["projects"],
+];
+
+$digital_creations_query = new WP_Query($digital_creations_args);
+
+/* ----- Ajouts récents ----- */
+$recent_additions = get_field("recent_additions");
+
+$recent_additions_args = [
+    "post_type" => "project",
+    "posts_per_page" => 6,
+];
+
+$recent_additions_query = new WP_Query($recent_additions_args);
+?>
 
 <main id="site-content" class="home-content">
     <section class="banner section-inner">
@@ -27,8 +69,8 @@ $banner = get_field("banner");
                                 <img src="<?php echo $large_featured_card[
                                     "url"
                                 ]; ?>" alt="<?php echo $large_featured_card[
-        "alt"
-    ]; ?>">
+    "alt"
+]; ?>">
                             </div>
                         <?php endif; ?>
                     </div>
@@ -36,8 +78,120 @@ $banner = get_field("banner");
                 }
                 ?>
             </div>
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination banner-slider-pagination"></div>
         </div>
+    </section>
+
+    <section class="selection-projects section-inner">
+        <?php if ($selection_projects["title"]): ?>
+            <h2 class="selection-projects-title"><?php echo $selection_projects[
+                "title"
+            ]; ?></h2>
+        <?php endif; ?>
+
+        <?php if ($selection_projects_query->have_posts()): ?>
+            <div class="home-projects-slider swiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    while ($selection_projects_query->have_posts()):
+                        $selection_projects_query->the_post(); ?>
+                                        <div class="banner-slider-slide swiper-slide">
+                                            <?php get_template_part(
+                                                "template-parts/project-card-preview",
+                                            ); ?>
+                                        </div>
+                                    <?php
+                    endwhile;
+                    wp_reset_query();
+                    ?>
+                </div>
+                 <div class="swiper-pagination home-projects-slider-pagination"></div>
+            </div>
+        <?php endif; ?>
+    </section>
+
+    <section class="audiovisual-projects section-inner">
+        <?php if ($audiovisual_projects["title"]): ?>
+            <h2 class="audiovisual-projects-title"><?php echo $audiovisual_projects[
+                "title"
+            ]; ?></h2>
+        <?php endif; ?>
+
+        <?php if ($audiovisual_projects_query->have_posts()): ?>
+            <div class="home-projects-slider swiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    while ($audiovisual_projects_query->have_posts()):
+                        $audiovisual_projects_query->the_post(); ?>
+                                        <div class="banner-slider-slide swiper-slide">
+                                            <?php get_template_part(
+                                                "template-parts/project-card-preview",
+                                            ); ?>
+                                        </div>
+                                    <?php
+                    endwhile;
+                    wp_reset_query();
+                    ?>
+                </div>
+                 <div class="swiper-pagination home-projects-slider-pagination"></div>
+            </div>
+        <?php endif; ?>
+    </section>
+
+    <section class="digital-creations-projects section-inner">
+        <?php if ($digital_creations["title"]): ?>
+            <h2 class="digital-creations-projects-title"><?php echo $digital_creations[
+                "title"
+            ]; ?></h2>
+        <?php endif; ?>
+
+        <?php if ($digital_creations_query->have_posts()): ?>
+            <div class="home-projects-slider swiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    while ($digital_creations_query->have_posts()):
+                        $digital_creations_query->the_post(); ?>
+                                        <div class="banner-slider-slide swiper-slide">
+                                            <?php get_template_part(
+                                                "template-parts/project-card-preview",
+                                            ); ?>
+                                        </div>
+                                    <?php
+                    endwhile;
+                    wp_reset_query();
+                    ?>
+                </div>
+                 <div class="swiper-pagination home-projects-slider-pagination"></div>
+            </div>
+        <?php endif; ?>
+    </section>
+
+    <section class="recent-additions section-inner">
+        <?php if ($recent_additions["title"]): ?>
+            <h2 class="recent-additions-title"><?php echo $recent_additions[
+                "title"
+            ]; ?></h2>
+        <?php endif; ?>
+
+        <?php if ($recent_additions_query->have_posts()): ?>
+            <div class="home-projects-slider swiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    while ($recent_additions_query->have_posts()):
+                        $recent_additions_query->the_post(); ?>
+                                        <div class="banner-slider-slide swiper-slide">
+                                            <?php get_template_part(
+                                                "template-parts/project-card-preview",
+                                            ); ?>
+                                        </div>
+                                    <?php
+                    endwhile;
+                    wp_reset_query();
+                    ?>
+                </div>
+                 <div class="swiper-pagination home-projects-slider-pagination"></div>
+            </div>
+        <?php endif; ?>
     </section>
 </main>
 
