@@ -11,6 +11,51 @@ h3 {
     line-height: 1.3;
     margin-bottom: 1.5rem;
     position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    width: fit-content;
+
+    &.has-red-line,
+    &.has-white-line {
+        &::before {
+            content: "";
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right;
+            border-radius: 50px;
+            width: 100%;
+            height: 2.5rem;
+            z-index: 2;
+        }
+    }
+
+    &.has-red-line {
+        &::before {
+            background-image: url("./imgs/text/red-line.webp");
+        }
+    }
+
+    &.has-white-line {
+        &::before {
+            background-image: url("./imgs/text/white-line.webp");
+        }
+    }
+
+    &.has-circle {
+        &::before {
+            content: "";
+            background-size: contain;
+            background-image: url("./imgs/text/circle.webp");
+            background-repeat: no-repeat;
+            background-position: center;
+            width: calc(100% + 4rem);
+            height: 15rem;
+            position: absolute;
+            top: -5rem;
+            left: -2rem;
+            z-index: 2;
+        }
+    }
 }
 
 h1 {

@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
               slidesPerView: 3,
             },
           },
-          spaceBetween: 20,
+          spaceBetween: 40,
           grabCursor: true,
           pagination: {
               el: '.home-projects-slider-pagination'

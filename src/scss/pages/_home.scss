@@ -6,8 +6,7 @@
 
 .home-content {
     background-image: url("./imgs/background/liege.jpg");
-    background-repeat: repeat;
-    background-size: 50vw;
+    background-size: 100vw;
     z-index: -1;
 }
 
@@ -155,6 +154,92 @@
             top: -8rem;
             left: 0;
             z-index: 0;
+        }
+    }
+}
+
+.audiovisual-projects {
+    &-wrapper {
+        position: relative;
+
+        &::before {
+            content: "";
+            background-image: url("./imgs/decorations/camera.webp");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right;
+            width: 70rem;
+            height: 50rem;
+            position: absolute;
+            top: -20%;
+            right: 0;
+            z-index: 1;
+        }
+    }
+}
+
+.digital-creations-projects {
+    &-wrapper {
+        position: relative;
+
+        &::before {
+            content: "";
+            background-image: url("./imgs/background/book-page.webp");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right;
+            width: 80rem;
+            height: 80rem;
+            position: absolute;
+            top: -25%;
+            right: 0;
+        }
+    }
+
+    & .swiper {
+        overflow-y: visible !important;
+        overflow-x: clip !important;
+    }
+
+    & .swiper-wrapper {
+        .swiper-slide:first-child {
+            position: relative;
+
+            &::before {
+                content: "";
+                background-image: url("./imgs/decorations/scotch.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: top right;
+                width: 16rem;
+                height: 16rem;
+                position: absolute;
+                top: -4rem;
+                right: -6rem;
+                z-index: 2;
+                rotate: 45deg;
+                filter: drop-shadow(2px 2px 4px $black);
+            }
+        }
+    }
+}
+
+.recent-additions {
+    &-wrapper {
+        position: relative;
+
+        &::before {
+            content: "";
+            background-image: url("./imgs/decorations/etoile.webp");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left;
+            width: 50rem;
+            height: 50rem;
+            position: absolute;
+            top: -5rem;
+            left: -10rem;
+            rotate: 50deg;
         }
     }
 }
