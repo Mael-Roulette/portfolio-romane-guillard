@@ -11,7 +11,7 @@
           <?php if ( has_nav_menu("socials") ): ?>
                 <?php wp_nav_menu([
                     "theme_location" => "socials",
-                    "menu_class" => "footer-content-socials-menu",
+                    "menu_class" => "footer-content-socials-menu socials-menu",
                     "container" => false,
                 ]); ?>
             <?php endif; ?>

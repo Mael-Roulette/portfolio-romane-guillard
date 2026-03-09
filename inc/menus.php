@@ -18,13 +18,15 @@ add_action("init", "register_menu");
 function social_links_to_icon($item_output, $item, $depth, $args)
 {
     if ("socials" === $args->theme_location) {
-        $icon = get_icon($item->title);
+        $icon = get_icon(strtolower($item->title));
 
-        $item_output = str_replace(
-            $args->link_after,
-            "</span>" . $icon,
-            $item_output,
-        );
+        if ($icon) {
+            $item_output = preg_replace(
+                '/(<a[^>]*>).*?(<\/a>)/s',
+                '$1' . $icon . '$2',
+                $item_output
+            );
+        }
     }
 
     return $item_output;

@@ -19,6 +19,15 @@ body {
 	margin: 0 auto;
 }
 
+.socials-menu {
+	svg {
+		width: 24px;
+		height: 24px;
+		display: block;
+		color: $dark-red;
+	}
+}
+
 @include responsive("md") {
 	.section-inner {
 		max-width: 748px;
