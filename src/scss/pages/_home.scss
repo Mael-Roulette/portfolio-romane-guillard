@@ -48,10 +48,15 @@
             padding: 0.2rem 1.5rem;
             font-size: 1.8rem;
             font-weight: $fbold;
+            transition: $transition;
 
             &.active {
                 color: rgba($color: $red, $alpha: 0.8);
                 background-color: $white;
+            }
+
+            &:hover {
+                background-color: rgba($color: $white, $alpha: 0.4);
             }
         }
     }
@@ -240,6 +245,132 @@
             top: -5rem;
             left: -10rem;
             rotate: 50deg;
+        }
+    }
+}
+
+.separator {
+    padding: 2rem 0 4rem;
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        height: 20rem;
+        width: 100%;
+        background-image: url("./imgs/text/grand_portfolio.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        height: 20rem;
+        width: 20rem;
+        background-image: url("./imgs/decorations/trefle.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        top: -12rem;
+        right: -10rem;
+    }
+}
+
+.youtube-projects {
+    &-title {
+        &.has-circle {
+            &::before {
+                right: -3rem;
+                left: auto;
+                width: 20rem;
+            }
+        }
+    }
+}
+
+.internship-projects {
+    &-wrapper {
+        position: relative;
+
+        &::before {
+            content: "";
+            background-image: url("./imgs/background/papier-rouge.webp");
+            background-repeat: no-repeat;
+            background-size: contain;
+            rotate: 180deg;
+            transform: rotateX(180deg);
+            height: 80vh;
+            width: 100%;
+            position: absolute;
+            top: -8rem;
+            right: 0;
+            z-index: 0;
+        }
+    }
+}
+
+.listen-projects {
+    &-wrapper {
+        position: relative;
+        padding-bottom: 15rem;
+
+        &::before {
+            content: "";
+            background-image: url("./imgs/background/carreaux.webp");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 70vh;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+        }
+    }
+
+    & .swiper {
+        overflow-y: visible !important;
+        overflow-x: clip !important;
+    }
+
+    & .swiper-wrapper {
+        .swiper-slide:nth-child(2) {
+            position: relative;
+
+            &::before {
+                content: "";
+                background-image: url("./imgs/decorations/scotch.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: top right;
+                width: 16rem;
+                height: 16rem;
+                position: absolute;
+                top: -8rem;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
+                filter: drop-shadow(1px 1px 2px $black);
+            }
+
+            &::after {
+                content: "";
+                background-image: url("./imgs/decorations/scotch.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: top right;
+                width: 16rem;
+                height: 16rem;
+                position: absolute;
+                bottom: -9rem;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
+                filter: drop-shadow(1px 1px 2px $black);
+            }
         }
     }
 }

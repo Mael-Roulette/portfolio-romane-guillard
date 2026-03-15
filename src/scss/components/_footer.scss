@@ -5,15 +5,123 @@
 /* -------------------------------------------------- */
 
 .footer {
+    position: relative;
+    background: linear-gradient(30deg, $white, #f0f0f0);
+
+
+    &::before {
+        content: "";
+        background-image: url("./imgs/background/footer-paper.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom;
+        height: 20rem;
+        width: 100vw;
+        position: absolute;
+        top: -20rem;
+        left: 0;
+        z-index: 0;
+    }
+
     &-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: relative;
+
+        &::before {
+            content: "";
+            background-image: url("./imgs/decorations/noeud.webp");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 12rem;
+            width: 12rem;
+            position: absolute;
+            top: -12rem;
+            left: 50%;
+            transform: translate(-50%);
+            z-index: 0;
+        }
+
+        &::after {
+            content: "";
+            background-image: url("./imgs/decorations/fleurs.webp");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 35rem;
+            width: 35rem;
+            position: absolute;
+            top: -18rem;
+            right: -15rem;
+            z-index: 0;
+        }
+
         &-wrapper {
-            padding: 1.5rem 0;
+            padding: 2.5rem 0 1.5rem;
+        }
+
+        &-thanks {
+            position: relative;
+            height: 20rem;
+            width: 100%;
+
+            &::before {
+                content: "";
+                display: block;
+                background-image: url("./imgs/text/merci.webp");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                height: 100%;
+                width: 60%;
+            }
         }
 
         &-socials-menu {
             display: flex;
             flex-flow: row wrap;
             gap: 1.5rem;
+            width: fit-content;
+            position: relative;
+
+            &::before {
+                content: "";
+                background-image: url("./imgs/decorations/sparkle.webp");
+                background-repeat: no-repeat;
+                background-size: contain;
+                height: 10rem;
+                width: 10rem;
+                position: absolute;
+                top: 2rem;
+                right: -7rem;
+                rotate: 45deg;
+                z-index: 0;
+            }
+
+            &-wrapper {
+                padding-left: 8rem;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    background-image: url("./imgs/decorations/arrow.webp");
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    height: 12rem;
+                    width: 12rem;
+                    position: absolute;
+                    rotate: 180deg;
+                    transform: rotateY(180deg);
+                    top: 8rem;
+                    left: -4rem;
+                    z-index: 0;
+                }
+            }
+
+            &-title {
+                font-size: 5rem;
+                color: $red;
+                text-shadow: none;
+            }
         }
     }
 
@@ -28,12 +136,20 @@
             display: flex;
             flex-flow: row wrap;
             justify-content: space-between;
+            align-items: center;
             gap: 5rem;
             padding: 1rem 0;
 
             .menu-item {
                 a {
                     color: $white;
+                }
+
+                &:nth-child(2) {
+                    a {
+                        font-size: 2rem;
+                        font-weight: $fbold;
+                    }
                 }
             }
 

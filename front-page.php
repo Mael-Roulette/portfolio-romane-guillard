@@ -46,7 +46,7 @@ $recent_additions = get_field("recent_additions");
 
 $recent_additions_args = [
     "post_type" => "project",
-    "posts_per_page" => 6,
+    "posts_per_page" => 3,
 ];
 
 $recent_additions_query = new WP_Query($recent_additions_args);
@@ -70,7 +70,7 @@ $internship_projects_args = [
     "posts_per_page" => -1,
     "category_name" => "internship"
 ];
-    
+
 $internship_projects_query = new WP_Query($internship_projects_args);
 
 /* ----- Projets live ----- */
@@ -251,12 +251,12 @@ $listen_projects_query = new WP_Query($listen_projects_args);
         </div>
     </section>
 
-    <div class="separator"></div>
+    <div class="separator section-inner"></div>
 
     <section class="youtube-projects-wrapper">
         <div class="youtube-projects section-inner">
             <?php if ($youtube_projects["title"]): ?>
-                <h2 class="youtube-projects-title"><?php echo $youtube_projects[
+                <h2 class="youtube-projects-title has-circle"><?php echo $youtube_projects[
                     "title"
                 ]; ?></h2>
             <?php endif; ?>
@@ -346,7 +346,7 @@ $listen_projects_query = new WP_Query($listen_projects_args);
     <section class="listen-projects-wrapper">
         <div class="listen-projects section-inner">
             <?php if ($listen_projects["title"]): ?>
-                <h2 class="listen-projects-title"><?php echo $listen_projects[
+                <h2 class="listen-projects-title has-circle"><?php echo $listen_projects[
                     "title"
                 ]; ?></h2>
             <?php endif; ?>

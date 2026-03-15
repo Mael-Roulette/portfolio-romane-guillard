@@ -20,11 +20,20 @@ body {
 }
 
 .socials-menu {
+	a {
+		padding: 1rem;
+		border-radius: 50px;
+		background-color: $dark-red;
+		display: block;
+		width: fit-content;
+		height: fit-content;
+	}
+
 	svg {
 		width: 24px;
 		height: 24px;
 		display: block;
-		color: $dark-red;
+		color: $white;
 	}
 }
 

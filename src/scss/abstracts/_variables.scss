@@ -1,4 +1,4 @@
-$font-primary: "Arial", sans-serif;
+$font-primary: "Outfit", sans-serif;
 $font-secondary: "StampatelloFaceto", sans-serif;
 
 $flight: 300;
@@ -12,6 +12,20 @@ $fbold: 700;
     font-style: normal;
     font-weight: 400;
     src: url(./fonts/StampatelloFaceto.otf);
+}
+
+@font-face {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 400;
+    src: url(./fonts/Outfit-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 700;
+    src: url(./fonts/Outfit-Bold.ttf);
 }
 
 /* -------------------------------------------------- */
